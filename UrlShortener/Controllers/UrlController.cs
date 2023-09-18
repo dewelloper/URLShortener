@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using UrlShortener.Db;
 using UrlShortener.Models;
 using UrlShortener.Util;
@@ -9,8 +9,12 @@ namespace UrlShortener.Controllers
     [Route("[controller]")]
     public class UrlController : ControllerBase
     {
-
-        public UrlController(ILogger<UrlController> logger)
+        //Hamit Yıldırım
+        //18.09.2023
+        //23:00
+        //this project prepared for the interview of the company named "XXX"
+        
+        public UrlController()
         {
         }
 
@@ -28,7 +32,6 @@ namespace UrlShortener.Controllers
 
             if (!string.IsNullOrEmpty(model.CustomUrl))
             {
-                // The 6 character restriction is not used for the CustomUrl but that is exist in normal shorened url code
                 var customUrlValidationErrorMessage = ShortUrlValidator.IsCustomURLValid(model.LongUrl, model.CustomUrl);
                 if (customUrlValidationErrorMessage != string.Empty)
                 {
@@ -40,7 +43,7 @@ namespace UrlShortener.Controllers
 
             if (!ShortUrlValidator.IsUrlAliasUnique(model.LongUrl, shortUrlCode))
             {
-                return Conflict("The collision part was not implemented! User ID information can be enhanced by adding Id, sessions or tokens etc.");
+                return Conflict("The collision part was implemented just for it's existence.");
             }
 
             var shortenedUrl = urlShortener.CombineUrl(model.LongUrl, shortUrlCode);
@@ -54,10 +57,14 @@ namespace UrlShortener.Controllers
         {
             if (MemoryDb.Urls.TryGetValue(shortenedUrl, out var longUrl))
             {
-                return Redirect(longUrl);
+                return Ok(longUrl);
+
+                // CORS policy error
+                //return Redirect(longUrl);
             }
 
             return NotFound();
         }
+
     }
 }

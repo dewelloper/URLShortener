@@ -1,14 +1,19 @@
+﻿/// writer: Hamit Yıldırım </summary>
+/// date: 18.09.2021 </summary>
+/// time: 23:00 </summary>
+/// this project prepared for the interview of the company named "XXX" </summary>
+/// There are many urlshorterner implementations in the world. </summary>
+/// I just aimed to prepare main logic of the urlshorterner. </summary>
+/// It needs many improvements. </summary>
+/// any further questions or suggestions, please contact me. 
+/// email: dewelloper@gmail.com or yildirim.hamit@hotmail.com</summary>
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-//string allowedOrigins = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build()["AllowedOrigins"];
-
 
 builder.Services.AddCors(o => o.AddPolicy("AllowAnyOrigin",
                       builder =>
@@ -23,7 +28,6 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
     app.UseSwaggerUI();
 }
 

@@ -94,7 +94,7 @@ namespace UrlShortener.Util
             }
         }
 
-        //ValidateAntiForgeryTokenAttribute
+        //ValidateAntiForgeryTokenAttribute: this attribute is used to prevent CSRF attacks. but this is the interview project, so I didn't use it.
         public static string IsOriginalURLValid(string? originalURL, int? isLengthFixed = 6)
         {
             var errorMessages = string.Empty;

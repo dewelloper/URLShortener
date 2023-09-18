@@ -26,15 +26,7 @@ namespace UrlShortener.Util
                 string base62Hash = Base62Encode(hashBytes);
 
                 // Ensure the output is always 6 characters long
-                if (base62Hash.Length < 6)
-                {
-                    string outputValue = string.Format("{0:D4}", base62Hash);
-                    base62Hash = outputValue.PadLeft(6, '0');
-                }
-                else if (base62Hash.Length > 6)
-                {
-                    base62Hash = base62Hash.Substring(0, 6);
-                }
+                base62Hash = base62Hash.Substring(0, 6);
 
                 return base62Hash;
             }
@@ -42,8 +34,9 @@ namespace UrlShortener.Util
 
         private string Base62Encode(byte[] bytes)
         {
-            BigInteger value = new BigInteger(bytes.Reverse().ToArray()); // Convert bytes to a positive BigInteger
-            if(value < 0)
+            BigInteger value = new BigInteger(bytes.Reverse().ToArray());
+            // Convert bytes to a positive BigInteger
+            if (value < 0)
             {
                 byte[] temp = new byte[bytes.Length];
                 Array.Copy(bytes, temp, bytes.Length);
