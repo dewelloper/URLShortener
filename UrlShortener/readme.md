@@ -16,3 +16,9 @@ The Cors part has been left as is for easier testing.
 
 Hamit Yıldırım
 18.09.2023
+
+-----------------***--------------------------
+I expect the same courtesy that I show by not mentioning the company name in my case studies.
+I am open to criticism and suggestions about the code I wrote, if you have any questions or if it should have been like this, what did you think here. I will never be offended, please write it as a comment, open a PR, or access it privately.
+contact me from: dewelloper@gmail.com or yildirim.hamit@hotmail.com
+@--;--;---/
